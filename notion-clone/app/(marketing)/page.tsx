@@ -8,8 +8,8 @@ import { Footer } from "./_components/footer";
     <div className = "flex flex-col items-center justify-centermd:justify-start text-center gap-y-8 flex-1 px-6 pb-10">
       <Heading />
       <Heroes/>
-      <Footer/>
       </div>
+      <Footer/>
   </div>
   );
 }
