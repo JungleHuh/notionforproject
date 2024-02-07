@@ -10,8 +10,9 @@ import { useMediaQuery } from "usehooks-ts"
 import { usePathname } from "next/navigation";
 import { UserItem } from "./user-item"
 import { Item  } from "./item";
-import { useQuery, useMutation } from "convex/react";
+import { useMutation } from "convex/react";
 import { toast } from "sonner";
+import { DocumentList } from "./document-list";
 
 import { cn } from "@/lib/utils";
 import { api } from "@/convex/_generated/api"
@@ -21,7 +22,6 @@ import { MenuIcon } from "lucide-react";
 export const Navigation = () => {{}
     const pathname = usePathname();
     const isMobile = useMediaQuery("(max-width: 768px");
-    const documents = useQuery(api.documents.get);
     const create = useMutation(api.documents.create);
 
     const isResizingRef = useRef(false);
@@ -146,7 +146,6 @@ export const Navigation = () => {{}
             <Item
             label = "Settings"
             icon = {Settings}
-            isSetting
             onClick = {() => {}}
             />
 
@@ -158,11 +157,7 @@ export const Navigation = () => {{}
 
         </div>
         <div className="mt-4">
-            {documents?.map((document) =>(
-                <p key = {document._id}>
-                    {document.title}
-                </p>
-            ))}
+        <DocumentList />
         </div>
         <div
             onMouseDown={() =>{handleMouseDown}}
